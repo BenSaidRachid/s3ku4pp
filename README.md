@@ -44,17 +44,19 @@ For that you have to use any stack : Express, Rails, Django, etc.
 
 Your API must be run by a docker-compose file ;)
 
+> Of course every sensible values must be set in an .env file
+
 # Create an HTTPS server
 
-You must create certificates (*.key and *.cert) using `OpenSsl`
+You must create certificates (\*.key and \*.cert) using `OpenSsl` and use them into your application server code.
 
 # Create a reverse proxy
 
-You can use `nginx` or `traefik` but this proxy must be the between your server and your clients
+You can use `nginx` or `traefik` and this proxy must be between your server and your clients.
 
 # Hello, JWT
 
-Add the json web token authentication to your routes
+Add the well-known json web token authentication to your routes.
 
 # API token
 
