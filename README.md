@@ -6,7 +6,7 @@
 * [Overview](#overview)
 * [Story](#story)
 * [Postlude](#postlude)
-* [Bonus](#bonus)
+* [Groups](#groups)
 * [Credits](#credits)
 
 ## <a name='overview'>🦊 Rules</a>
@@ -74,6 +74,20 @@ Well, let's add a way to limit API calls. For that use a Redis instance that wil
 # Next part coming soon
 
 You will learn how to add tiers services to protect your API against attacks.
+
+## <a name='groups'😱 Groups</a>
+
+- ASSAMOI	Josias / SANVOISIN	Antoine
+- BENZAQUIN	Ugo / BADJI	Yassine / MESTRIE	Esteban
+- GALISSAIRE	Maxime / BEN SAID	Rachid
+- GRANDA Emilie / FACINOU	Fabian
+- IDKOWIAK	Fabrice / LHOMEL	Alexandre
+- MOREAU	Kevin / PEREIRA	Romain
+- PEROUMAL	Arunravi / RILI	Yanis
+- RENAULT	Steven / BOUMAAZ	Wafaa
+- TEJOUTEU TENEKEU	Cabrel Yvan / PIRAUX	Alexis
+
+- ![image](https://user-images.githubusercontent.com/1437676/120715818-7413fb00-c4c5-11eb-9e5b-d79162c5d065.png)
 
 ## <a name='credits'>🐵 Credits</a>
 
