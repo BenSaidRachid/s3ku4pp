@@ -87,8 +87,6 @@ You will learn how to add tiers services to protect your API against attacks.
 - RENAULT	Steven / BOUMAAZ	Wafaa
 - TEJOUTEU TENEKEU	Cabrel Yvan / PIRAUX	Alexis
 
-- ![image](https://user-images.githubusercontent.com/1437676/120715818-7413fb00-c4c5-11eb-9e5b-d79162c5d065.png)
-
 ## <a name='credits'>🐵 Credits</a>
 
 Craft with :heart: in **Paris**.
