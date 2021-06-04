@@ -6,10 +6,18 @@ import passport from 'passport';
 import routes from './routes';
 import { info, success } from './helpers/log';
 
+const https = require('https');
+const fs = require('fs');
+
+
 export default class Server {
     private _host: string;
     private _port: number;
     private _app: Express | null = null;
+    private credentials = {
+        key: fs.readFileSync(__dirname + '/../sslCertificates/key.pem'),
+        cert: fs.readFileSync(__dirname + '/../sslCertificates/cert.pem')
+    };
 
     public constructor(host: string, port: number) {
         this._host = host;
@@ -30,9 +38,12 @@ export default class Server {
     public async run(): Promise<void> {
         await this._initialize();
 
-        if (this._app)
-            this._app.listen(this._port, () => {
+        if (this._app) {
+            const httpsServer = https.createServer(this.credentials, this._app)
+            
+            httpsServer.listen(this._port, () => {
                 info(`Server is listening on ${this._host}:${this._port}`);
             });
+        }
     }
 }
