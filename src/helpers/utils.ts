@@ -60,7 +60,7 @@ const checkUserAccessibility = async ({
     req: Request;
     user_id?: number;
     unauthorizedMsg?: string;
-}): Promise<object> | never => {
+}): Promise<User> | never => {
     const { id } = req.params;
     const { user: currentUser } = req;
     const userId = user_id || id;

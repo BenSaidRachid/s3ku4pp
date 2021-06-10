@@ -1,4 +1,6 @@
 import express, { Express } from 'express';
+import https from 'https';
+import fs from 'fs';
 import helmet from 'helmet';
 import cors from 'cors';
 import './middlewares/passport';
@@ -6,17 +8,13 @@ import passport from 'passport';
 import routes from './routes';
 import { info, success } from './helpers/log';
 
-import https from 'https';
-import fs from 'fs';
-
-
 export default class Server {
     private _host: string;
     private _port: number;
     private _app: Express | null = null;
     private credentials = {
         key: fs.readFileSync(__dirname + '/../sslCertificates/server.key'),
-        cert: fs.readFileSync(__dirname + '/../sslCertificates/server.cert')
+        cert: fs.readFileSync(__dirname + '/../sslCertificates/server.cert'),
     };
 
     public constructor(host: string, port: number) {
@@ -39,10 +37,10 @@ export default class Server {
         await this._initialize();
 
         if (this._app) {
-            const httpsServer = https.createServer(this.credentials, this._app)
-            
+            const httpsServer = https.createServer(this.credentials, this._app);
+
             this._app.listen(this._port, () => {
-            //httpsServer.listen(this._port, () => {
+                //httpsServer.listen(this._port, () => {
                 info(`Server is listening on ${this._host}:${this._port}`);
             });
         }
