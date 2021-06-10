@@ -1,7 +1,6 @@
 {
   "name": "Todo list",
   "env": [
-    "DATABASE_URL",
-    "JWT_SECRET"
+    "DATABASE_URL"
   ]
 }
