@@ -12,10 +12,10 @@ export default class Server {
     private _host: string;
     private _port: number;
     private _app: Express | null = null;
-    private credentials = {
-        key: fs.readFileSync(__dirname + '/../sslCertificates/server.key'),
-        cert: fs.readFileSync(__dirname + '/../sslCertificates/server.cert'),
-    };
+    // private credentials = {
+    //     key: fs.readFileSync(__dirname + '/../sslCertificates/server.key'),
+    //     cert: fs.readFileSync(__dirname + '/../sslCertificates/server.cert'),
+    // };
 
     public constructor(host: string, port: number) {
         this._host = host;
@@ -37,7 +37,7 @@ export default class Server {
         await this._initialize();
 
         if (this._app) {
-            const httpsServer = https.createServer(this.credentials, this._app);
+            // const httpsServer = https.createServer(this.credentials, this._app);
 
             this._app.listen(this._port, () => {
                 //httpsServer.listen(this._port, () => {
