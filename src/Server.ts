@@ -6,8 +6,8 @@ import passport from 'passport';
 import routes from './routes';
 import { info, success } from './helpers/log';
 
-const https = require('https');
-const fs = require('fs');
+import https from 'https';
+import fs from 'fs';
 
 
 export default class Server {
@@ -15,8 +15,8 @@ export default class Server {
     private _port: number;
     private _app: Express | null = null;
     private credentials = {
-        key: fs.readFileSync(__dirname + '/../sslCertificates/key.pem'),
-        cert: fs.readFileSync(__dirname + '/../sslCertificates/cert.pem')
+        key: fs.readFileSync(__dirname + '/../sslCertificates/server.key'),
+        cert: fs.readFileSync(__dirname + '/../sslCertificates/server.cert')
     };
 
     public constructor(host: string, port: number) {
@@ -41,7 +41,8 @@ export default class Server {
         if (this._app) {
             const httpsServer = https.createServer(this.credentials, this._app)
             
-            httpsServer.listen(this._port, () => {
+            this._app.listen(this._port, () => {
+            //httpsServer.listen(this._port, () => {
                 info(`Server is listening on ${this._host}:${this._port}`);
             });
         }
