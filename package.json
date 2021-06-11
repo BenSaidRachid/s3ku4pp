@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Todo api",
   "scripts": {
     "dev": "yarn nodemon",
     "lint": "yarn eslint --ext .ts ./src/**/*.ts",
@@ -9,7 +9,7 @@
     "test": "yarn tsc",
     "clean": "yarn rimraf .dist",
     "build": "yarn clean && yarn babel src/ --out-dir .dist --extensions .ts --quiet",
-    "start": "yarn build && node .dist"
+    "start": "yarn prisma migrate deploy && node .dist/main.js"
   },
   "keywords": [],
   "license": "ISC",

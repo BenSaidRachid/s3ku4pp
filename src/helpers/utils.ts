@@ -7,7 +7,7 @@ import { hashSync, compareSync, genSaltSync } from 'bcryptjs';
 import { isEmpty } from 'lodash';
 import { existsSync } from 'fs';
 import prisma from './client';
-import { JWT_SECRET } from './params';
+import { JWT_SECRET, NODE_ENV } from './params';
 
 moment.locale('fr');
 
@@ -26,7 +26,7 @@ const dateUtils = {
 function prelude(): void | never {
     const envPathName = path.join(process.cwd(), '.env');
     const appConfig = require(path.join(process.cwd(), 'app.config.json'));
-
+    if (NODE_ENV == 'production') return;
     if (existsSync(envPathName)) {
         dotenv.config();
 

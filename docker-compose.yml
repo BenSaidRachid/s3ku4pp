@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 services:
   database: 
     image: postgres:latest
@@ -8,19 +8,20 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=todo
-  # todo_api:
-  #   build:
-  #     context: .
-  #   environment:
-  #     - DATABASE_URL=postgres://root:root@postgres:5432/todo
-  #     - PORT=8080
-  #   depends_on:
-  #     - database
-  #   ports:
-  #     - 8080:8080
+  todo_api:
+    build:
+      context: .
+    environment:
+      - DATABASE_URL=postgres://root:root@database:5432/todo
+      - PORT=8080
+      - NODE_ENV=production
+    depends_on:
+      - database
   proxy:
     image: nginx:latest
     restart: unless-stopped
+    depends_on: 
+      - todo_api
     ports:
       - "1996:80"
     volumes:
