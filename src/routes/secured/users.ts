@@ -10,4 +10,7 @@ routes.get('/:id/api-token', ServiceController.getApiToken);
 routes.post('/:id/tasks', TaskController.create);
 routes.get('/:id/tasks', TaskController.getAll);
 
+routes.post('/:id/api-tasks', TaskController.create);
+routes.get('/:id/api-tasks', TaskController.getAll);
+
 export default routes;

@@ -1,13 +1,15 @@
 import express, { Express } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
+import https from 'https';
+import fs from 'fs';
 import './middlewares/passport';
 import passport from 'passport';
 import routes from './routes';
 import { info, success } from './helpers/log';
+import { rateLimiter } from './middlewares/rateLimiter';
 
-import https from 'https';
-import fs from 'fs';
+
 
 
 export default class Server {
@@ -32,6 +34,7 @@ export default class Server {
         this._app.use(express.json());
         this._app.use(express.urlencoded({ extended: true }));
         this._app.use(passport.initialize());
+        this._app.use(rateLimiter);
         this._app.use('/', routes);
     }
 
@@ -40,9 +43,9 @@ export default class Server {
 
         if (this._app) {
             const httpsServer = https.createServer(this.credentials, this._app)
-            
+
             this._app.listen(this._port, () => {
-            //httpsServer.listen(this._port, () => {
+                //httpsServer.listen(this._port, () => {
                 info(`Server is listening on ${this._host}:${this._port}`);
             });
         }
